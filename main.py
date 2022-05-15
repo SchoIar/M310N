@@ -66,6 +66,7 @@ async def helpmusic(ctx):
         em.add_field(name="`.skip`", value="Skips the current song")
         em.add_field(name="`.pause/.resume`", value="Pauses/resumes the current song")
         em.add_field(name="`.clearmusic`", value="Clear's the queue")
+        await ctx.send(embed=em) 
 
 #theres more but i cant be bothered to list them out, just check the cog LOL
 
