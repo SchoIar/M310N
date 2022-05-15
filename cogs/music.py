@@ -312,7 +312,7 @@ class Music(commands.Cog):
                 embed = discord.Embed(title="", description=f'Could not find a track for "{pos}"', color=discord.Color.green())
                 await ctx.send(embed=embed)
     
-    @commands.command(name='clearmusic', aliases=['clr', 'cl', 'cr', 'delqueue'], description="clears entire queue")
+    @commands.command(name='clearmusic', aliases=['clrq', 'removeq', 'clearqueue', 'delqueue'], description="clears entire queue")
     async def clear_(self, ctx):
         """Deletes entire queue of upcoming songs."""
 
@@ -355,34 +355,6 @@ class Music(commands.Cog):
         fmt = f"\n__Now Playing__:\n[{vc.source.title}]({vc.source.web_url}) | ` {duration} Requested by: {vc.source.requester}`\n\n__Up Next:__\n" + fmt + f"\n**{len(upcoming)} songs in queue**"
         embed = discord.Embed(title=f'Queue for {ctx.guild.name}', description=fmt, color=discord.Color.green())
         embed.set_footer(text=f"{ctx.author.display_name}", icon_url=ctx.author.avatar_url)
-        await ctx.send(embed=embed)
-
-    @commands.command(name='np', aliases=['song', 'current', 'currentsong', 'playing'], description="Shows current song being played")
-    async def now_playing_(self, ctx):
-        """Display information about the currently playing song."""
-        vc = ctx.voice_client
-
-        if not vc or not vc.is_connected():
-            embed = discord.Embed(title="", description="🎵 Not connected to a voice channel 🎵", color=discord.Color.green())
-            return await ctx.send(embed=embed)
-
-        player = self.get_player(ctx)
-        if not player.current:
-            embed = discord.Embed(title="", description="🎵 I am not playing anything 🎵", color=discord.Color.green())
-            return await ctx.send(embed=embed)
-        
-        seconds = vc.source.duration % (24 * 3600) 
-        hour = seconds // 3600
-        seconds %= 3600
-        minutes = seconds // 60
-        seconds %= 60
-        if hour > 0:
-            duration = "%dh %02dm %02ds" % (hour, minutes, seconds)
-        else:
-            duration = "%02dm %02ds" % (minutes, seconds)
-
-        embed = discord.Embed(title="", description=f"[{vc.source.title}]({vc.source.web_url}) [{vc.source.requester.mention}] | `{duration}`", color=discord.Color.green())
-        embed.set_author(icon_url=self.bot.user.avatar_url, name=f"Now Playing 🎶")
         await ctx.send(embed=embed)
 
     @commands.command(name='leave', aliases=["stop", "dc", "disconnect", "bye"], description="stops music and disconnects from voice")

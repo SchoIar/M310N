@@ -8,7 +8,7 @@ import asyncio
 import requests
 import random
 from discord.ext import tasks
-
+#lotta info taken from https://discordpy.readthedocs.io/en/stable/ext/tasks/index.html
 #counter = 1
 #meow
 intents = discord.Intents.all() #MUST ALSO ADD iNTENTS IN DISCORD DEV PORTAL
@@ -48,23 +48,25 @@ async def on_message(message):
 @bot.command()
 async def help(ctx):
         em = discord.Embed(title = "M3's Help", description ="", color = 0x00a8ff)
-        em.add_field(name="`$clear`", value="Clears channel message history (admin only)")
-        em.add_field(name="`$rpt`", value="Make the bot echo you (admin only) ")
-        em.add_field(name="`$dice`", value="Rolls a dice (6 faces)")
-        em.add_field(name="`$add`", value="adds two numbers together!")
-        em.add_field(name="`$choose`", value="chooses between multiple choices!")
-        em.add_field(name="`$helpmusic`", value="help commands for M31ON's music commands")
+        em.add_field(name="`.clear`", value="Clears channel message history (admin only)")
+        em.add_field(name="`.rpt`", value="Make the bot echo you (admin only) ")
+        em.add_field(name="`.dice`", value="Rolls a dice (6 faces)")
+        em.add_field(name="`.add`", value="adds two numbers together!")
+        em.add_field(name="`.choose`", value="chooses between multiple choices!")
+        em.add_field(name="`.helpmusic`", value="help commands for M31ON's music commands")
         em.set_footer(text="M31ON")
         await ctx.send(embed=em) 
 
 @bot.command()
 async def helpmusic(ctx):
         em = discord.Embed(title = "Music Help", description ="", color = 0x00a8ff)
-        em.add_field(name="`$p`", value="play's a song from youtube! (uses YoutubeDl")
-        em.add_field(name="`$summon", value="Make the bot join the call ")
-        em.add_field(name="`$q`", value="Shows the queue")
-        em.add_field(name="`$skip`", value="Skips the current song")
-        em.add_field(name="`$pause/$resume`", value="Pauses/resumes the current song")
+        em.add_field(name="`.p`", value="play's a song from youtube! (uses YoutubeDl")
+        em.add_field(name="`.summon", value="Make the bot join the call ")
+        em.add_field(name="`.q`", value="Shows the queue")
+        em.add_field(name="`.skip`", value="Skips the current song")
+        em.add_field(name="`.pause/.resume`", value="Pauses/resumes the current song")
+        em.add_field(name="`.clearmusic`", value="Clear's the queue")
+
 #theres more but i cant be bothered to list them out, just check the cog LOL
 
 @bot.command(name='dice', aliases=['roll','rolladice'])
