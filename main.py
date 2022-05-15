@@ -48,7 +48,6 @@ async def on_message(message):
 @bot.command()
 async def help(ctx):
         em = discord.Embed(title = "M3's Help", description ="", color = 0x00a8ff)
-        em.add_field(name="`.clear`", value="Clears channel message history (admin only)")
         em.add_field(name="`.rpt`", value="Make the bot echo you (admin only) ")
         em.add_field(name="`.dice`", value="Rolls a dice (6 faces)")
         em.add_field(name="`.add`", value="adds two numbers together!")
@@ -86,19 +85,6 @@ async def choose(ctx, *choices: str):
 @bot.command()
 async def ip(ctx):
     await ctx.send('The IP is: play.ultimamc.net')
-
-@bot.command()
-async def clear(ctx):
-    if ctx.channel.id == 782333701903089716 or 781764123733393409 or 825102614462332987 or 970569207009906728 or 850248808679866428 or 846897587994099712:
-        print('not allowed')
-    else:
-        if ctx.author.guild_permissions.administrator:
-                await ctx.channel.delete()
-                new_channel = await ctx.channel.clone(reason="Channel was cleared")
-                await new_channel.edit(position=ctx.channel.position)
-                await new_channel.send("`Channel was cleared`")
-        else:
-                await ctx.send("insufficiant perms")
 
 @bot.command()
 async def rpt(ctx,*,message="Error: No/Invalid message entered"):
