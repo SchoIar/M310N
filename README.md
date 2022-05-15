@@ -11,6 +11,6 @@ Go to https://discord.com/developers & create a new application
 -> bot -> Generate an OAuth2 (bot) with administrator permissions 
 `For optimal performance`: turn on all Privileged Gateway Intents
 
-    Bot:
+   ' Bot:
 `$ pip install -r requirements.txt`
 
