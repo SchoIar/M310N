@@ -89,13 +89,16 @@ async def ip(ctx):
 
 @bot.command()
 async def clear(ctx):
-    if ctx.author.guild_permissions.administrator:
-            await ctx.channel.delete()
-            new_channel = await ctx.channel.clone(reason="Channel was cleared")
-            await new_channel.edit(position=ctx.channel.position)
-            await new_channel.send("`Channel was cleared`")
+    if ctx.channel.id == 782333701903089716 or 781764123733393409 or 825102614462332987 or 970569207009906728 or 850248808679866428 or 846897587994099712:
+        print('not allowed')
     else:
-            await ctx.send("insufficiant perms")
+        if ctx.author.guild_permissions.administrator:
+                await ctx.channel.delete()
+                new_channel = await ctx.channel.clone(reason="Channel was cleared")
+                await new_channel.edit(position=ctx.channel.position)
+                await new_channel.send("`Channel was cleared`")
+        else:
+                await ctx.send("insufficiant perms")
 
 @bot.command()
 async def rpt(ctx,*,message="Error: No/Invalid message entered"):
